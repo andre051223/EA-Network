@@ -87,6 +87,8 @@ p {
 .logo {
   width: auto;
   height: 150px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -454,6 +456,27 @@ section {
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
+  min-height: 300px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+}
+
+.opportunities-background img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+.opportunities-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.05) 0%, rgba(214, 158, 46, 0.05) 100%);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .opportunities-description h3 {
@@ -534,6 +557,27 @@ section {
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
+  min-height: 300px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+}
+
+.podcast-background img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.podcast-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(30, 215, 96, 0.08) 0%, rgba(26, 54, 93, 0.05) 100%);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .podcast-content-area {
@@ -1017,6 +1061,11 @@ section {
     font-size: 3rem;
   }
 
+  .logo {
+    height: 120px;
+    max-width: 250px;
+  }
+
   .about-grid {
     gap: 1.5rem;
   }
@@ -1031,6 +1080,22 @@ section {
   .founder-card,
   .contact-form-area {
     max-width: 350px;
+  }
+
+  .opportunities-background img,
+  .podcast-background img {
+    min-height: 280px;
+    object-position: center;
+  }
+
+  .opportunities-background img:hover,
+  .podcast-background img:hover {
+    transform: scale(1.02);
+  }
+
+  .opportunities-grid,
+  .podcast-grid {
+    min-height: 320px;
   }
 }
 
@@ -1048,6 +1113,11 @@ section {
 
   .navbar .container {
     height: 80px;
+  }
+
+  .logo {
+    height: 60px;
+    max-width: 200px;
   }
 
   .nav-menu {
@@ -1129,6 +1199,29 @@ section {
 
   .opportunities-content-area {
     padding: 1rem;
+  }
+
+  .opportunities-background img,
+  .podcast-background img {
+    min-height: 250px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .opportunities-background img:hover,
+  .podcast-background img:hover {
+    transform: scale(1.01);
+    filter: brightness(1.02);
+  }
+
+  .opportunities-background::before,
+  .podcast-background::before {
+    opacity: 0.7;
+  }
+
+  .opportunities-grid,
+  .podcast-grid {
+    min-height: 280px;
   }
 
   .podcast-grid {
@@ -1230,8 +1323,43 @@ section {
     font-size: 1rem;
   }
 
+  .logo {
+    height: 50px;
+    max-width: 150px;
+  }
+
   section {
     padding: 40px 0;
+  }
+
+  .opportunities-background img,
+  .podcast-background img {
+    min-height: 200px;
+    object-position: center top;
+    border-radius: 8px;
+  }
+
+  .opportunities-background,
+  .podcast-background {
+    border-radius: 8px;
+  }
+
+  .opportunities-background::before,
+  .podcast-background::before {
+    border-radius: 8px;
+    opacity: 0.6;
+  }
+
+  .opportunities-background img:hover,
+  .podcast-background img:hover {
+    transform: none;
+    filter: none;
+  }
+
+  .opportunities-grid,
+  .podcast-grid {
+    min-height: 240px;
+    gap: 1rem;
   }
 
   .registration-card {
@@ -1284,6 +1412,48 @@ section {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+  }
+}
+
+/* Ultra small mobile devices */
+@media (max-width: 360px) {
+  .opportunities-background img,
+  .podcast-background img {
+    min-height: 180px;
+    object-position: center;
+  }
+
+  .opportunities-grid,
+  .podcast-grid {
+    min-height: 220px;
+    gap: 0.8rem;
+  }
+
+  .opportunities-content-area,
+  .podcast-content-area {
+    padding: 1rem 0.8rem;
+  }
+}
+
+/* Performance and accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .opportunities-background img,
+  .podcast-background img {
+    transition: none;
+  }
+  
+  .opportunities-background img:hover,
+  .podcast-background img:hover {
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  .opportunities-background img,
+  .podcast-background img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 }
 
